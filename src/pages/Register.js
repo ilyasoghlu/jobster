@@ -26,10 +26,9 @@ function Register() {
   const [values, setValues] = useState(initialState)
   const {user, isLoading} = useSelector(store => store.user)
   const dispatch = useDispatch()
-  // ! redux toolkit and useNavigate will be here later 
+
 
   
-
   const handleChange = (e) =>{
     const name = e.target.name;
     const value = e.target.value;
@@ -57,6 +56,17 @@ function Register() {
   const toggleMember = () =>{
     setValues({...values, isMember: !values.isMember})
   }
+
+  // ! redux toolkit and useNavigate 
+  const navigate = useNavigate ()
+    useEffect(() =>{
+      if(user) {
+        setTimeout(()=>{
+          navigate('/')
+        }, 3000)
+      }
+    }, [user, navigate])
+
   return (
     <Wrapper className='full-page'>
       <form className='form' onSubmit={onSubmit}>
