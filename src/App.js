@@ -1,6 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Landing, Error, Dashboard, Register} from "./pages";
+import {Landing, Error,  Register} from "./pages";
 import { ToastContainer } from "react-toastify";
+import {
+  Stats,
+  Profile,
+  AddJob,
+  AllJobs,
+  SharedLayout
+} from './pages/dashboard'
 import 'react-toastify/ReactToastify.css'
 
 
@@ -10,8 +17,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Dashboard />}
-        />
+          element={<SharedLayout />}
+        >
+          <Route index element= {<Stats/>}/> 
+          <Route path="all-jobs" element= {<AllJobs/>}/> 
+          <Route path="add-job" element= {<AddJob/>}/> 
+          <Route path="profile" element= {<Profile/>}/> 
+        </Route>
         <Route
           path="/landing"
           element={<Landing />}
