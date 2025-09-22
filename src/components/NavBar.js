@@ -1,8 +1,11 @@
 import React from 'react'
+import Wrapper from '../assets/wrappers/Navbar'
 
 function NavBar() {
   return (
-    <div>NavBar</div>
+    <Wrapper>
+      <div>NavBar</div>
+    </Wrapper>
   )
 }
 

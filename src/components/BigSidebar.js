@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Wrapper from '../assets/wrappers/BigSidebar'
 function BigSidebar() {
   return (
-    <div>BigSidebar</div>
+    <Wrapper>
+      <div>BigSidebar</div>
+    </Wrapper>
   )
 }
 
