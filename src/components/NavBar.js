@@ -1,10 +1,50 @@
 import React from 'react'
 import Wrapper from '../assets/wrappers/Navbar'
+// import { FaHome } from 'react-icons/fa'
+import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa'
+import Logo from './Logo'
+import { useState } from 'react'
+import  {useDispatch, useSelector} from 'react-redux'
+
 
 function NavBar() {
+  const { user } = useSelector((store) =>store.user);
+  const dispatch = useDispatch()
+
+
   return (
     <Wrapper>
-      <div>NavBar</div>
+      <div className='nav-center'>
+        <button type='button' className='toggle-button' onClick={() => console.log('toggle sidebar')}>
+          <FaAlignLeft />
+        </button>
+        <div>
+          <Logo />
+          <h3 className='logo-text'>dashboard</h3>
+        </div>
+        <div className='btn-container'>
+          <button 
+            type='button'
+            className='btn'
+            onClick={() => console.log('toggle logout dropdown')}>
+              <FaUserCircle />
+              {user?.name}
+              <FaCaretDown />
+            </button>
+            <div className='dropdown-btn'>
+              <button
+                type='button'
+                className='dropdown-btn'
+                onClick={() => {
+                  console.log('logout user')
+                }}
+              >
+                logout
+              </button>
+            </div>
+        </div>
+      </div>
+
     </Wrapper>
   )
 }
