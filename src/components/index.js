@@ -3,6 +3,7 @@ import FormRow from "./FormRow";
 import NavBar from "./NavBar";
 import SmallSidebar from "./SmallSidebar";
 import BigSidebar from "./BigSidebar";
+import NavLinks from "./NavLinks";
 
 
 export {
@@ -10,4 +11,6 @@ export {
     FormRow, 
     NavBar,
     SmallSidebar,
-    BigSidebar }
+    BigSidebar,
+    NavLinks
+}
