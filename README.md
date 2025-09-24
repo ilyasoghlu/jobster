@@ -3613,3 +3613,5 @@ const SearchContainer = () => {
 };
 export default SearchContainer;
 ```
+
+JSON WEB TOKEN (read about it )
