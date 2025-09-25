@@ -1,8 +1,9 @@
 import React from 'react'
-import {FormRow} from '../../components'
+import {FormRow, FormRowSelect} from '../../components'
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
+
 
 
 
@@ -36,59 +37,73 @@ function AddJob() {
 
   return (
     <Wrapper>
-      <form className='form'>
-        <h3>{isEditing? 'edit job' : 'add job'}</h3>
+      <form className="form">
+        <h3>{isEditing ? "edit job" : "add job"}</h3>
 
-        <div className='form-center'>
+        <div className="form-center">
           {/* position */}
           <FormRow
-            type='text'
-            name='position'
+            type="text"
+            name="position"
             value={position}
             handleChange={handleJobInput}
           />
           {/* company */}
           <FormRow
-            type='text'
-            name='company'
+            type="text"
+            name="company"
             value={company}
             handleChange={handleJobInput}
           />
           {/* location */}
           <FormRow
-            type='text'
-            labelText='job location'
-            name='jobLocation'
+            type="text"
+            labelText="job location"
+            name="jobLocation"
             value={jobLocation}
             handleChange={handleJobInput}
           />
           {/* job status */}
+          <FormRowSelect
+            name='status'
+            value={status}
+            handleChange={handleJobInput}
+            list={statusOptions}
+          />
 
           {/* job type */}
 
-          {/* btn conatiner */}
+          <FormRowSelect
+            name='jobType'
+            labelText='job type'
+            value={jobType}
+            handleChange={handleJobInput}
+            list={jobTypeOptions}
+          />
 
-          <div className='btn-container'>
-            <button 
-            type='button'
-            className='btn btn-block clear-btn'
-            onClick={() => console.log('clear values')}
+          {/* btn container */}
+
+          <div className="btn-container">
+            <button
+              type="button"
+              className="btn btn-block clear-btn"
+              onClick={() => console.log("clear values")}
             >
               clear
             </button>
             <button
-              type='submit'
-              className='btn btn-block submit-btn'
+              type="submit"
+              className="btn btn-block submit-btn"
               onClick={handleSubmit}
               disabled={isLoading}
-              >
-                submit
-              </button>
+            >
+              submit
+            </button>
           </div>
         </div>
       </form>
     </Wrapper>
-  )
+  );
 }
 
 export default AddJob
