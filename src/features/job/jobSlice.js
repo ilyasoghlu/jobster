@@ -37,9 +37,9 @@ const jobSlice = createSlice({
     name:'job',
     initialState,
     reducers: {
-        handleChange: (state, {payload: {name, value}}) =>{
-            state[name] = value;
-        },
+        // handleChange: (state, {payload: {name, value}}) =>{
+        //     state[name] = value;
+        // },
         clearValues : () =>{
             return {...initialState, jobLocation:getUserFromLocalStorage()?.location || '' }
         },
@@ -80,5 +80,5 @@ const jobSlice = createSlice({
     }
 })
 
-export const {handleChange, clearValues, setEditJob} = jobSlice.actions;
+export const { clearValues, setEditJob} = jobSlice.actions;
 export default jobSlice.reducer
