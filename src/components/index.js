@@ -14,5 +14,24 @@ import ChartsContainer from "./ChartsContainer";
 import StatsItem from "./StatsItem";
 import AreaCharts from "./AreaCharts";
 import BarChartContainer from "./BarChartContainer";
+import PaginationBtnContainer from "./PaginationBtnContainer";
 
-export { Logo, FormRow, NavBar, SmallSidebar, BigSidebar, NavLinks, FormRowSelect, Job, SearchContainer, JobsContainer, Loading, StatsContainer, ChartsContainer, StatsItem, AreaCharts, BarChartContainer };
+export { 
+    Logo, 
+    FormRow, 
+    NavBar, 
+    SmallSidebar, 
+    BigSidebar, 
+    NavLinks, 
+    FormRowSelect, 
+    Job, 
+    SearchContainer, 
+    JobsContainer, 
+    Loading, 
+    StatsContainer, 
+    ChartsContainer, 
+    StatsItem, 
+    AreaCharts, 
+    BarChartContainer, 
+    PaginationBtnContainer,
+};
