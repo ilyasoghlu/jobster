@@ -28,13 +28,13 @@ const initialState = {
 export const getAllJobs = createAsyncThunk(
     'allJobs/getJobs',
     async (_, thunkAPI) =>{
-        let url = `/jobs`
+        const {page, search, searchStatus, searchType, sort} = thunkAPI.getState().allJobs;
+        let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`
+        if(search){
+            url = url+`&search=${search}`
+        }
         try {
-            const resp = await customFetch.get(url, {
-                headers:{
-                    authorization: `Bearer ${thunkAPI.getState().user.user.token}`
-                }
-            })
+            const resp = await customFetch.get(url)
             return resp.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.msg)
@@ -66,7 +66,7 @@ const allJobsSlice = createSlice({
             state.isLoading = false;
         },
         handleChange: (state, {payload:{name, value}})=>{
-            // state.page = 1;
+            state.page = 1;
             state[name] = value;
         },
         clearFilters:(state) =>{
@@ -102,7 +102,6 @@ const allJobsSlice = createSlice({
             state.isLoading = false
             toast.error(payload)
         },
-      
     }
 })
 
