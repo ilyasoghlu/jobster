@@ -1,10 +1,10 @@
 
 
-import customFetch from "../../utils/axios";
-import { logoutUser } from "./userSlice";
+import customFetch, {checkForUnauthorizedResponse} from "../../utils/axios";
 import authHeader from "../../utils/authHeader";
 import { clearAllJobsState } from "../allJobs/allJobsSlice";
 import { clearValues } from "../job/jobSlice";
+import { logoutUser } from "./userSlice";
 
 
 export const registerUserThunk = async(url, user, thunkAPI) => {
@@ -12,7 +12,7 @@ export const registerUserThunk = async(url, user, thunkAPI) => {
         const resp = await customFetch.post(url, user)
         return resp.data
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.response.data.msg)
+        return checkForUnauthorizedResponse(error, thunkAPI)
     }
 } 
 
@@ -22,7 +22,7 @@ export const loginUserThunk = async(url, user, thunkAPI) =>{
         const resp = await customFetch.post(url, user);
         return resp.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.response.data.msg);
+        return checkForUnauthorizedResponse(error, thunkAPI)
     }
 }
 
@@ -33,11 +33,7 @@ export const updateUserThunk = async(url, user, thunkAPI) =>{
         );
         return resp.data;
         } catch (error) {
-            if(error.response.status === 401){
-            thunkAPI.dispatch(logoutUser())
-            return thunkAPI.rejectWithValue('Unauthorized! Logging Out...');
-            }
-            return thunkAPI.rejectWithValue(error.response.data.msg);
+            return checkForUnauthorizedResponse(error, thunkAPI);
         }
         }
 
